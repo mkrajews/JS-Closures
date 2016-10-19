@@ -15,14 +15,11 @@ closure over the name variable. Invoke outer saving the return value into
 another variable called 'inner'. */
 
 // Code Here
+var inner = outer();
 
 //Once you do that, invoke inner.
-
+inner();
 //Code Here
-
-
-
-
 
 
 
@@ -42,16 +39,15 @@ var callFriend = function(){
   return callF;
 };
 
+
 /****** INSTRUCTIONS PROBLEM 2 ******/
 /* Above you're given a callFriend function that returns another function.
 Create a makeCall function that when invoked logs 'Calling Jake at 435-215-9248'
 in your console. */
-
+function makeCall() {
+  console.log("Calling Jake at 435-215-9248");
+}
   //Code Here
-
-
-
-
 
 
 
@@ -67,16 +63,21 @@ in your console. */
 properly. */
 
 //Code Here
+function makeCounter () {
+  var counter = 0;
+  function counterFn() {
+    counter++;
+    return counter;
+  }
+  return counterFn;
+}
 
 //Uncomment this once you make your function
-//   var count = makeCounter();
-//   count(); // 1
-//   count(); // 2
-//   count(); // 3
-//   count(); // 4
-
-
-
+  var count = makeCounter();
+  count(); // 1
+  count(); // 2
+  count(); // 3
+  count(); // 4
 
 
 
