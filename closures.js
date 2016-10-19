@@ -197,7 +197,6 @@ function timeOutCounter() {
   }
 
   function newScope(i) {
-
     setTimeout(function() {
       console.log(i);
     }, i * 1000);
@@ -209,15 +208,24 @@ timeOutCounter();
 // console.log(i);
 
 
-
-
-
-
 /******************************************************************************\
 	#PROBLEM-08
 \******************************************************************************/
 
 var funcArray = [];
+
+function smthg(num) {
+  return function() {
+    return num;
+  }
+}
+
+for(var i = 0; i < 6; i++) {
+  funcArray.push(smthg(i));
+}
+
+
+
 
 /*
   Make the following code work
