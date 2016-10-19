@@ -83,8 +83,6 @@ function makeCounter () {
 
 
 
-
-
 /******************************************************************************\
 	#PROBLEM-04
 \******************************************************************************/
@@ -97,23 +95,22 @@ function is responsible for decrementing the value by one. You will need to use
 the module pattern to achieve this. */
 
 function counterFactory(value) {
-
+    var val = value;
   // Code here.
 
-
   return {
-  }
+    inc: function() {
+      val++;
+      return val;
+    },
+    dec: function() {
+      val--;
+      return val;
+    }
+  };
+
 }
-
-
 counter = counterFactory(10);
-
-
-
-
-
-
-
 
 
 
@@ -130,20 +127,17 @@ function motivation(firstname, lastname){
   var welcomeText = 'You\'re doing awesome, keep it up ';
 
   // code message function here.
-
+  function message() {
+    return welcomeText + firstname + ' ' + lastname + ".";
+  }
 
   //Uncommment this to return the value of your invoked message function
-  //return message();
+console.log(message());
+  return message();
 
 }
 
-motivation('Billy', 'Bob'); // 'Your doing awesome keep it up Billy Bob
-
-
-
-
-
-
+motivation('Billy', 'Bob'); // 'Youre doing awesome keep it up Billy Bob
 
 
 
@@ -154,7 +148,7 @@ motivation('Billy', 'Bob'); // 'Your doing awesome keep it up Billy Bob
 
 /****** INSTRUCTIONS PROBLEM 6 ******/
 /* Inside the return create a publicMethod property that is a function that
-invokes privateMethod. After you create the privateMethod. Invoke it by calling
+invokes privateMethod. After you create the privateMethod, Invoke it by calling
 module.publicMethod(); outside the module scope */
 
 var module = (function() {
@@ -172,18 +166,16 @@ var module = (function() {
 	// outside our lexical scope
 
   return {
+    publicMethod: function() {
+      return privateMethod();
+    }
     // Code here.
   };
 
 })();
 
 // Uncomment this after you create your public method
-//   module.publicMethod();
-
-
-
-
-
+  module.publicMethod();
 
 
 
@@ -201,16 +193,20 @@ then 3, etc). Run this code in your console to see what the output is. */
 // To make this code work you will need to create a new scope for every iteration.
 function timeOutCounter() {
   for (var i = 0; i <= 5; i++) {
-    setTimeout(function() {
-      console.log(i);
-    }, i * 1000)
+    newScope(i);
   }
 
   function newScope(i) {
-    console.log(i)
+
+    setTimeout(function() {
+      console.log(i);
+    }, i * 1000);
+
   }
 }
 timeOutCounter();
+
+// console.log(i);
 
 
 
